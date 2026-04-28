@@ -13,15 +13,11 @@ def f(x):
     # return (1 - 0.6*x) / x                     # (1-0.6x)/x = 0
     # return math.exp(x) - 2*x - 21              # e^x = 2x+21
 
-
-
-#   REGULA FALSI 
 def regula_falsi(x1, x2, n_iter):
     
     fx1 = f(x1)
     fx2 = f(x2)
 
-    # ---------- Input validation ----------
     if fx1 * fx2 > 0:
         raise ValueError(
             f"\n[ERROR] f(x1) * f(x2) must be <= 0 to guarantee a root in the bracket.\n"
@@ -60,7 +56,6 @@ def regula_falsi(x1, x2, n_iter):
     root = rows[-1]["x3"]
     return rows, root
 
-# PRINTER =====
 def print_table(rows, decimals=4):
     fmt     = f".{decimals}f"
     headers = ["Iteration", "x1", "x2", "x3", "f(x1)", "f(x2)", "f(x3)"]
@@ -77,7 +72,6 @@ def print_table(rows, decimals=4):
         ])
     print(tabulate(table, headers=headers, tablefmt="outline"))
 
-# GRAPH =====
 def plot_last_iteration(x1_orig, x2_orig, rows):
 
     last   = rows[-1]
@@ -126,7 +120,6 @@ def plot_last_iteration(x1_orig, x2_orig, rows):
                 textcoords="offset points", xytext=(-38, 8),
                 fontsize=8, color="#16a34a")
 
-
     ax.scatter([x2_l], [fx2_l], color="#dc2626", s=80, zorder=6,
                label=f"x₂ = {x2_l:.4f},  f(x₂) = {fx2_l:.4f}")
     ax.plot([x2_l, x2_l], [0, fx2_l], color="#dc2626",
@@ -135,7 +128,6 @@ def plot_last_iteration(x1_orig, x2_orig, rows):
                 textcoords="offset points", xytext=(6, 8),
                 fontsize=8, color="#dc2626")
 
-    # x3 — crossing point of secant on x-axis (the root estimate)
     ax.scatter([x3_l], [0], color="#7c3aed", s=120, zorder=7,
                marker="*", label=f"x₃ = {x3_l:.4f}  (root estimate, iter {it_num})")
     ax.plot([x3_l, x3_l], [0, fx3_l], color="#7c3aed",
@@ -162,7 +154,6 @@ def main():
     print("   REGULA FALSI (FALSE POSITION) ROOT FINDER")
     print("=" * 55)
 
-    # ------ User input ------
     try:
         x1     = float(input("Enter x1 : "))
         x2     = float(input("Enter x2 : "))

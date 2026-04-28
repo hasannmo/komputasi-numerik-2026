@@ -6,19 +6,17 @@ from tabulate import tabulate
 def f(x):
     return x**3 - 100
 
-    # ganti fungsi diatas
-    # return math.cos(x) - 3*x                 
-    # return math.log(x) - 1 - 1/(x**2)        
-    # return math.exp(x * math.log(x)) - 10      
-    # return (1 - 0.6*x) / x                     
-    # return math.exp(x) - 2*x - 21              
+    # return math.cos(x) - 3*x                   # cos x = 3x
+    # return math.log(x) - 1 - 1/(x**2)          # ln x = 1 + 1/x^2
+    # return math.exp(x * math.log(x)) - 10      # x^x = 10
+    # return (1 - 0.6*x) / x                     # (1-0.6x)/x = 0
+    # return math.exp(x) - 2*x - 21              # e^x = 2x+21      
 
 def bolzano(x1, x2, n_iter):
     
     fx1 = f(x1)
     fx2 = f(x2)
 
-    #errorblock
     if fx1 * fx2 > 0:
         raise ValueError(
             f"\n[ERROR] f(x1) * f(x2) harus <= 0\n"
@@ -54,8 +52,6 @@ def bolzano(x1, x2, n_iter):
     root = rows[-1]["x3"]
     return rows, root
 
-
-# PRINTER =====
 def print_table(rows, decimals=4):
     fmt = f".{decimals}f"
     headers = ["Iteration", "x1", "x2", "x3", "f(x1)", "f(x2)", "f(x3)"]
@@ -72,9 +68,6 @@ def print_table(rows, decimals=4):
         ])
     print(tabulate(table, headers=headers, tablefmt="outline"))
 
-
-
-# GRAPH =====
 def plot_function(x1_orig, x2_orig, root, rows):
     
     margin  = abs(x2_orig - x1_orig) * 0.6
@@ -95,13 +88,10 @@ def plot_function(x1_orig, x2_orig, root, rows):
     ax.set_facecolor("#f9f9f9")
     fig.patch.set_facecolor("#ffffff")
 
-    # f(x)
     ax.plot(xs, ys, color="#2563eb", linewidth=2, label="f(x)", zorder=3)
 
-    # axhline
     ax.axhline(0, color="#374151", linewidth=0.8, linestyle="--", zorder=2)
 
-    # markers
     for xv, label, color in [(x1_orig, "x₁ (start)", "#16a34a"),
                               (x2_orig, "x₂ (start)", "#dc2626")]:
         try:
@@ -113,7 +103,6 @@ def plot_function(x1_orig, x2_orig, root, rows):
         except Exception:
             pass
 
-    # midpoint
     cmap   = plt.cm.get_cmap("autumn", len(rows))
     for idx, r in enumerate(rows):
         x3v = r["x3"]
@@ -126,7 +115,6 @@ def plot_function(x1_orig, x2_orig, root, rows):
         except Exception:
             pass
 
-    # rootmarker
     try:
         ax.scatter([root], [0], color="#7c3aed", s=100, zorder=7,
                    label=f"Root ≈ {root:.6f}", marker="*")
@@ -148,7 +136,6 @@ def main():
     print("   BOLZANO (BISECTION) ROOT FINDER")
     print("=" * 55)
 
-    # ------ User input ------
     try:
         x1     = float(input("Enter x1 : "))
         x2     = float(input("Enter x2 : "))
