@@ -55,7 +55,7 @@ def plot(x1_orig, x2_orig, rows):
         ax.scatter([x3l], [0], color=c, s=100, marker="*", zorder=7,
                    label=f"Iter {i}: x3={x3l:.4f}")
 
-    ax.set(xlabel="x", ylabel="f(x)", title="Regula Falsi Semua Iterasi")
+    ax.set(xlabel="x", ylabel="f(x)", title="Regula Falsi All Iterations")
     ax.legend(fontsize=7, ncol=2)
     ax.grid(True, ls="--", alpha=0.4)
     plt.tight_layout()
