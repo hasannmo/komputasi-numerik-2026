@@ -141,7 +141,7 @@ def main():
         x2     = float(input("Enter x2 : "))
         n_iter = int(input("Number of iterations : "))
     except ValueError:
-        print("[ERROR] Invalid input. Please enter numeric values.")
+        print("[ERROR] Invalid input. Enter numeric values.")
         return
 
     if n_iter < 1:
