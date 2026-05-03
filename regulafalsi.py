@@ -52,7 +52,7 @@ def plot(x1_orig, x2_orig, rows):
         sx = np.array([x1l - margin * 0.3, x2l + margin * 0.3])
         ax.plot(sx, fx1l + slope * (sx - x1l),
                 color=c, lw=1, ls="--", alpha=0.7)
-        ax.scatter([x3l], [0], color=c, s=100, marker="*", zorder=7,
+        ax.scatter([x3l], [0], color=c, s=100, marker=".", zorder=7,
                    label=f"Iter {i}: x3={x3l:.4f}")
 
     ax.set(xlabel="x", ylabel="f(x)", title="Regula Falsi All Iterations")
