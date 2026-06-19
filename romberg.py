@@ -41,7 +41,6 @@ def print_table(R, itr):
 
 def main():
     print("=== Romberg Integration ===\n")
-    #print("\n")
 
     a = float(input("Enter lower limit a: "))
     b = float(input("Enter upper limit b: "))
@@ -53,7 +52,6 @@ def main():
 
     R, result = romberg(a, b, itr+1)
 
-    #print("\nRomberg itration Table:")
     print_table(R, itr+1)
 
     print(f"\nIntegral ≈ {result:.10f}\n")
