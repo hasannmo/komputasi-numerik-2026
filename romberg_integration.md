@@ -75,7 +75,7 @@ Romberg integration does not simply refine a single trapezoidal estimate. Instea
 2. **Combines adjacent estimates** to cancel the leading error term, the Richardson extrapolation step.
 3. **Repeats the combining** on each new column to cancel the next error term, and so on.
 
-A simple way to think about it: the trapezoidal rule supplies raw materials of varying quality; Romberg integration is the recipe for combining them so the errors cancel out far faster than brute-force refinement of a single estimate ever could.
+The trapezoidal rule supplies raw materials of varying quality; Romberg integration is the algoriithm for combining them so the errors cancel out far faster than brute-force refinement of a single estimate ever could.
 
 ## Limitations
 
